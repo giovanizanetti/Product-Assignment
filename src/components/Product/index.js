@@ -8,7 +8,7 @@ const Product = ({ productName, image }) => {
     <Link
       data-testid='product-component'
       to={`/${productRoute}`}
-      className='my-3 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3 transform transition duration-500 hover:scale-110'
+      className='my-3 px-1 w-full md:w-1/2 md:p-3 lg:my-4 lg:px-4 lg:w-1/3 transform transition duration-500 hover:scale-110'
     >
       <div className='overflow-hidden rounded-xl shadow-lg bg-gray-100'>
         <img alt={productName} className='block h-auto w-full p-10' src={image} />

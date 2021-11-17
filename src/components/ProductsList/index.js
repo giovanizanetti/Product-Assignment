@@ -1,5 +1,4 @@
 import React from 'react'
-import { useParams } from 'react-router'
 import Product from '../Product'
 
 const ProductsList = ({ products }) => {
