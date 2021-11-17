@@ -1,9 +1,14 @@
-import { render, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
+import { render } from '../../test-utils'
+
 import ProductsList from './index'
 
 beforeEach(() => {
   jest.mock('../../helpers/index', () => ({
     capitalize: jest.fn(() => 'Mocked'),
+  }))
+  jest.mock('../../helpers/index', () => ({
+    removeSpaceBetween: jest.fn(() => 'Mocked1'),
   }))
 })
 
