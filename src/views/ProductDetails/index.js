@@ -2,19 +2,30 @@ import { useParams } from 'react-router-dom'
 import { useProduct } from '../../hooks/useProduct'
 import { useEffect } from 'react'
 
+import ProductOptions from '../../components/ProductOptions'
+
 const Product = () => {
   const { product } = useParams()
   const currentProduct = useProduct(product)
   const { titlePlural } = currentProduct
 
-  useEffect(() => {
-    const Properties = currentProduct.properties.map((property) => property.slug)
-    console.log(Properties)
-  }, [currentProduct])
+  // useEffect(() => {
+  //   const options = currentProduct.properties.map((property) => property)
+  //   // const Options = Properties.options.map((option) => option)
+  //   console.log(options)
+  // }, [currentProduct])
 
   const displayProductProperites = () => {
     const productProperties = currentProduct.properties.map((property) => {
-      return <div key={property.slug}>{property.slug + ': ' + property.title}</div>
+      return (
+        <div key={property.slug} className='container'>
+          <h2>{property.title}</h2>
+          <div>
+            <ProductOptions options={property.options} />
+            {/* {console.log(property.options)} */}
+          </div>
+        </div>
+      )
     })
     return productProperties
   }
