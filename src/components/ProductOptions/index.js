@@ -2,17 +2,16 @@ import Select from 'react-select'
 import { useEffect } from 'react'
 
 const ProdutOptions = ({ options }) => {
-  useEffect(() => {
-    options.forEach((option) => console.log(option.name))
-  }, [options])
+  //TODO HANDLE CUSTOM OPTIONS
 
   const optionsNames = options.map((option) => {
-    return { label: option.name }
+    const name = option.name ? option.name : 'Custom'
+    return { label: name }
   })
 
   return (
     <Select
-      className='basic-single'
+      className='mx-5 sm:mx-0 w-100'
       classNamePrefix='select'
       // defaultValue={colourOptions[0]}
       isClearable={true}

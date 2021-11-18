@@ -1,6 +1,5 @@
 import { useParams } from 'react-router-dom'
 import { useProduct } from '../../hooks/useProduct'
-import { useEffect } from 'react'
 
 import ProductOptions from '../../components/ProductOptions'
 
@@ -9,20 +8,13 @@ const Product = () => {
   const currentProduct = useProduct(product)
   const { titlePlural } = currentProduct
 
-  // useEffect(() => {
-  //   const options = currentProduct.properties.map((property) => property)
-  //   // const Options = Properties.options.map((option) => option)
-  //   console.log(options)
-  // }, [currentProduct])
-
   const displayProductProperites = () => {
     const productProperties = currentProduct.properties.map((property) => {
       return (
         <div key={property.slug} className='container'>
-          <h2>{property.title}</h2>
-          <div>
+          <div className='h-25'>
+            <h2 className='text-lg mb-2 font-bold md:text-left break-normal'>{property.title}</h2>
             <ProductOptions options={property.options} />
-            {/* {console.log(property.options)} */}
           </div>
         </div>
       )
@@ -31,18 +23,18 @@ const Product = () => {
   }
 
   return (
-    <div className='container m-auto'>
-      <h1 className='p-5'>{titlePlural}</h1>
+    <div className='container m-auto px-2 text-gray-600'>
+      <header className='bg-yellow-300 h-100'>
+        <h1 className='p-5 text-4xl font-bold m-5'>{titlePlural}</h1>
+      </header>
       <div
         data-testid='productDetails-component'
-        className='grid sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 '
+        className='grid mx-4 sm:grid-cols-2  xl:grid-cols-3 2xl:grid-cols-4 gap-6 '
       >
         {displayProductProperites()}
       </div>
     </div>
   )
-
-  // <div >{titlePlural}</div>
 }
 
 export default Product
