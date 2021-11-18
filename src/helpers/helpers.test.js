@@ -1,4 +1,4 @@
-import { capitalize, removeSpaceBetween } from './index'
+import { capitalize, removeSpaceBetween, stringShorten } from './index'
 
 test('Should capitilize text', () => {
   const lowerCasedString = 'print.com'
@@ -12,4 +12,11 @@ test('Should remove white space in string', () => {
   const unitedString = 'businesscards'
 
   expect(removeSpaceBetween(spacedString)).toEqual(unitedString)
+})
+
+test('Should long strings be shortened by max 23 chcaracters', () => {
+  const lonString = 'This is a very very very very long string'
+  const shortenedString = 'This is a very very ...'
+
+  expect(stringShorten(lonString)).toEqual(shortenedString)
 })
