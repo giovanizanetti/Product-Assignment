@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom'
 import { useProduct } from '../../hooks/useProduct'
+import { capitalize, removeStringUnderline } from '../../helpers'
 
 import ProductOptions from '../../components/ProductOptions'
 
@@ -8,13 +9,22 @@ const Product = () => {
   const currentProduct = useProduct(product)
   const { titlePlural } = currentProduct
 
+  /*
+    I realized that not all product properties has a title. 
+    I did the assumption that they are important
+    otherwise they should be there. 
+    Therefore, I have use the slug property instead.
+  */
+
   const displayProductProperites = () => {
-    const productProperties = currentProduct.properties.map((property) => {
+    const productProperties = currentProduct.properties.map((property, index) => {
+      const { title, options, slug } = property || {}
+      const propertyTitle = title ? title : removeStringUnderline(slug)
       return (
         <div key={property.slug} className='container'>
           <div className='h-25'>
-            <h2 className='text-lg mb-2 font-bold md:text-left break-normal'>{property.title}</h2>
-            <ProductOptions options={property.options} />
+            <h2 className='text-lg mb-2 font-bold md:text-left break-normal'>{capitalize(propertyTitle)}</h2>
+            <ProductOptions options={options} index={index} />
           </div>
         </div>
       )

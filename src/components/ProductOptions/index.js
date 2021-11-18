@@ -1,19 +1,29 @@
 import Select from 'react-select'
-import { useEffect } from 'react'
+import { removeStringUnderline, capitalize } from '../../helpers'
+import { useRef, useEffect } from 'react'
 
-const ProdutOptions = ({ options }) => {
+const ProdutOptions = ({ options, index }) => {
   //TODO HANDLE CUSTOM OPTIONS
+  const inputRef = useRef()
+
+  useEffect(() => {
+    if (index === 0) {
+      inputRef.current.focus()
+    }
+  }, [inputRef, index])
 
   const optionsNames = options.map((option) => {
-    const name = option.name ? option.name : 'Custom'
-    return { label: name }
+    const { name, slug } = option || {}
+    const optionName = name ? name : removeStringUnderline(slug.toString())
+    return { label: capitalize(optionName) }
   })
 
   return (
     <Select
+      ref={inputRef}
       className='mx-5 sm:mx-0 w-100'
       classNamePrefix='select'
-      // defaultValue={colourOptions[0]}
+      defaultValue={{ label: `select options...` }}
       isClearable={true}
       isSearchable={true}
       name='options'

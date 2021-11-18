@@ -1,4 +1,4 @@
-import { capitalize, removeSpaceBetween, stringShorten } from './index'
+import { capitalize, removeSpaceBetween, stringShorten, removeStringUnderline } from './index'
 
 test('Should capitilize text', () => {
   const lowerCasedString = 'print.com'
@@ -19,4 +19,11 @@ test('Should long strings be shortened by max 23 chcaracters', () => {
   const shortenedString = 'This is a very very ...'
 
   expect(stringShorten(lonString)).toEqual(shortenedString)
+})
+
+test('Should underline be removed from string and replaced by a space between', () => {
+  const stringWithUnderline = 'string_underline'
+  const formatedString = 'string underline'
+
+  expect(removeStringUnderline(stringWithUnderline)).toEqual(formatedString)
 })
