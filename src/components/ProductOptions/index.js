@@ -1,14 +1,21 @@
 import Select from 'react-select'
 import { removeStringUnderline, capitalize } from '../../helpers'
-import { useRef, useEffect, useState } from 'react'
+import { useRef, useEffect, useState, useContext } from 'react'
 import CustomOption from '../CustomOption'
 import 'rc-slider/assets/index.css'
+import { Store } from '../../globalState/Store'
 
 const ProdutOptions = ({ options, index }) => {
+  const { choosenProductOptions, addProductOption } = useContext(Store)
   const inputRef = useRef()
   const [selected, setSelected] = useState(null)
   const [customSizes, setCustomSizes] = useState(null)
   const [isOpen, setIsOpen] = useState(false)
+
+  //test
+  useEffect(() => {
+    // console.log(choosenProductOptions)
+  }, [choosenProductOptions])
 
   useEffect(() => {
     if (index === 0) {
@@ -24,13 +31,16 @@ const ProdutOptions = ({ options, index }) => {
 
   const handleSelect = (option) => {
     if (!option) return setSelected(null)
+
     const hasCustomSizes = option.value.hasOwnProperty('customSizes')
     if (hasCustomSizes) {
       const { customSizes } = option.value
       setIsOpen(true)
       return setCustomSizes(customSizes)
     }
+
     setSelected(option)
+    addProductOption(option)
   }
   return (
     <>

@@ -1,11 +1,18 @@
-import React from 'react'
+import { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { capitalize, removeSpaceBetween } from '../../helpers'
+import { Store } from '../../globalState/Store'
 
 const Product = ({ productName, image }) => {
+  const { products, selectProduct } = useContext(Store)
+
+  useEffect(() => {
+    console.log(products)
+  }, [products])
   const productRoute = productName && removeSpaceBetween(productName)
   return (
     <Link
+      onClick={() => selectProduct(productRoute)}
       data-testid='product-component'
       to={`/${productRoute}`}
       className='my-3 px-1 w-full md:w-1/2 md:p-3 lg:my-4 lg:px-4 lg:w-1/3 transform transition duration-500 hover:scale-110 lg:hover:scale-105'

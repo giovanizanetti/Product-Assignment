@@ -20,7 +20,7 @@ const CustomOption = ({ setSelected, customSizes, isOpen, setIsOpen }) => {
     if (isCancel) return setIsOpen(false)
     const customChoice = {
       label: `custom(${customWidth}x${customHeight}mm)`,
-      value: { width: customWidth, height: customHeight },
+      value: { width: customWidth, height: customHeight, slug: 'custom' },
     }
     setIsOpen(false)
 
@@ -39,7 +39,7 @@ const CustomOption = ({ setSelected, customSizes, isOpen, setIsOpen }) => {
       style={{
         content: {
           backgroundColor: '#f58c08',
-          height: '50vh',
+          // height: '50vh',
         },
       }}
     >
@@ -71,13 +71,13 @@ const CustomOption = ({ setSelected, customSizes, isOpen, setIsOpen }) => {
             </div>
             <div className='flex justify-center p-3'>
               <button
-                className='bg-gray-100 text-red-500 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 mr-2'
+                className='bg-gray-100 text-red-500 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none p-2 ease-linear transition-all duration-150 mr-2'
                 onClick={(e) => handleClose('cancel')}
               >
                 Cancel
               </button>
               <button
-                className='bg-blue-500 text-white font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150'
+                className='bg-blue-500 text-white font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none p-2 ease-linear transition-all duration-150'
                 onClick={(e) => handleClose()}
               >
                 Confirm
