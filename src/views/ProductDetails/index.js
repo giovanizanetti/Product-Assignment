@@ -9,17 +9,11 @@ import { MdAddShoppingCart } from 'react-icons/md'
 import ProductOptions from '../../components/ProductOptions'
 
 const Product = () => {
-  const [areAllPropertiesSelected, setAreAllPropertiesSlected, selectProduct] = useState(null)
+  const [areAllPropertiesSelected, setAreAllPropertiesSlected] = useState(null)
   const { product } = useParams()
   const currentProduct = useProduct(product)
   const { titlePlural } = currentProduct
   const { choosenProductOptions, addProductToCart } = useContext(Store) || {}
-
-  // useEffect(() => {
-  //   if (product) {
-  //     selectProduct(product)
-  //   }
-  // }, [selectProduct, product])
 
   /*
     I realized that not all product properties has a title. 
@@ -48,9 +42,10 @@ const Product = () => {
       console.log('Select all options')
       setAreAllPropertiesSlected(false)
     } else {
-      setAreAllPropertiesSlected(true)
+      setAreAllPropertiesSlected(null)
       addProductToCart(choosenProductOptions)
     }
+    //TODO: DISPLAY MESSAGE TO THE USER WHEN THE PRODUCT IS ADDED TO THE CAR
   }
 
   return (
