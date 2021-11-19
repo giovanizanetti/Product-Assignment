@@ -48,7 +48,7 @@ const Product = () => {
       console.log('Select all options')
       setAreAllPropertiesSlected(false)
     } else {
-      setAreAllPropertiesSlected(true)
+      setAreAllPropertiesSlected(null)
       addProductToCart(choosenProductOptions)
     }
   }

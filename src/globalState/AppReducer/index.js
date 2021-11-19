@@ -15,7 +15,7 @@ const initialState = {
   selectedProduct: null,
 }
 
-const AppReducer = (state = initialState, action) => {
+const AppReducer = (state = { initialState }, action) => {
   console.log(state.cart)
   console.log(state)
   switch (action.type) {
@@ -32,8 +32,8 @@ const AppReducer = (state = initialState, action) => {
     case ADD_PRODUCT_TO_CART:
       return {
         ...state,
-        // cart: Object.assign(state.cart, action.payload),
         cart: [...state.cart, action.payload],
+        choosenProductOptions: [],
       }
     default:
       return state

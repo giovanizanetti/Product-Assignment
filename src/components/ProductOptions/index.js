@@ -6,7 +6,7 @@ import 'rc-slider/assets/index.css'
 import { Store } from '../../globalState/Store'
 
 const ProdutOptions = ({ options, index }) => {
-  const { choosenProductOptions, addProductOption } = useContext(Store)
+  const { choosenProductOptions, addProductOption, cart } = useContext(Store)
   const inputRef = useRef()
   const [selected, setSelected] = useState(null)
   const [customSizes, setCustomSizes] = useState(null)
@@ -14,8 +14,8 @@ const ProdutOptions = ({ options, index }) => {
 
   //test
   useEffect(() => {
-    // console.log(choosenProductOptions)
-  }, [choosenProductOptions])
+    setSelected(null)
+  }, [cart])
 
   useEffect(() => {
     if (index === 0) {
