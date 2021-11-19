@@ -1,8 +1,11 @@
-import React from 'react'
+import { useContext } from 'react'
 import Product from '../Product'
+import { Store } from '../../context/Store'
 
-const ProductsList = ({ products }) => {
-  if (!products.length) return <strong>Sorry! There is no products.</strong>
+const ProductsList = () => {
+  const { products } = useContext(Store)
+
+  if (!products.length) return <strong>Sorry! There are no products.</strong>
 
   return (
     <div data-testid='productsList-component' className='container lg:my-12  mx-auto px-4 md:px-12'>

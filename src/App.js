@@ -2,6 +2,7 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import { useState } from 'react'
 import Routes from './Routes'
 import Header from '../src/components/Header'
+import { StoreProvider } from './context/Store'
 
 function App() {
   const [showModal, setShowModal] = useState(false)
@@ -9,10 +10,12 @@ function App() {
 
   return (
     <div data-testid='app-component' className='App'>
-      <Router>
-        <Header showModal={showModal} setShowModal={setShowModal} cartCount={cartCount} setCartCount={setCartCount} />
-        {Routes}
-      </Router>
+      <StoreProvider>
+        <Router>
+          <Header showModal={showModal} setShowModal={setShowModal} cartCount={cartCount} setCartCount={setCartCount} />
+          {Routes}
+        </Router>
+      </StoreProvider>
     </div>
   )
 }

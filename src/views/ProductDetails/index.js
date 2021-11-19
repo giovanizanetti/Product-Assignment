@@ -22,7 +22,7 @@ const Product = () => {
       const propertyTitle = title ? title : removeStringUnderline(slug)
       return (
         <div key={property.slug} className='container'>
-          <div className='h-25'>
+          <div className='h-25 sm:mx-3'>
             <h2 className='text-lg mb-2 font-bold md:text-left break-normal'>{capitalize(propertyTitle)}</h2>
             <ProductOptions options={options} index={index} />
           </div>
