@@ -7,13 +7,15 @@ import { Store } from '../../globalState/Store'
 import { MdAddShoppingCart } from 'react-icons/md'
 
 import ProductOptions from '../../components/ProductOptions'
+import AddedToCartFeedback from '../../components/AddedToCartFeedback'
 
 const Product = () => {
-  const [areAllPropertiesSelected, setAreAllPropertiesSlected] = useState(null)
+  const [areAllPropertiesSelected, setAreAllPropertiesSelected] = useState(null)
   const { product } = useParams()
   const currentProduct = useProduct(product)
   const { titlePlural } = currentProduct
-  const { choosenProductOptions, addProductToCart } = useContext(Store) || {}
+  const { choosenProductOptions, addProductToCart, selectedProduct, selectProduct } = useContext(Store) || {}
+  const [showFeedback, setShowFeedback] = useState(false)
 
   /*
     I realized that not all product properties has a title. 
@@ -40,33 +42,47 @@ const Product = () => {
   const HandleAddToTheCart = () => {
     if (currentProduct.properties.length !== choosenProductOptions.length) {
       console.log('Select all options')
-      setAreAllPropertiesSlected(false)
+      setAreAllPropertiesSelected(false)
     } else {
-      setAreAllPropertiesSlected(null)
+      setAreAllPropertiesSelected(null)
       addProductToCart(choosenProductOptions)
+      setShowFeedback(true)
     }
     //TODO: DISPLAY MESSAGE TO THE USER WHEN THE PRODUCT IS ADDED TO THE CAR
   }
 
-  return (
-    <div className='container m-auto px-2 text-gray-600'>
-      <header className='bg-yellow-300 h-100 flex justify-between items-center relative '>
-        <h1 className='sm:p-5 text-4xl font-bold m-5'>{titlePlural}</h1>
-        <div className='sm:p-5 text-4xl font-bold m-5 hover:text-white'>
-          <MdAddShoppingCart onClick={HandleAddToTheCart} size={30} />
-        </div>
-      </header>
-      {areAllPropertiesSelected === false && (
-        <small className='text-red-500 font-bold h-20'>Please, select all peoperties.</small>
-      )}
+  const handleFeedback = () => {
+    selectProduct(null)
+    setShowFeedback(false)
+  }
 
-      <div
-        data-testid='productDetails-component'
-        className='grid mx-4 sm:grid-cols-2  xl:grid-cols-3 2xl:grid-cols-4 gap-6 mt-5'
-      >
-        {displayProductProperites()}
+  return (
+    <>
+      <AddedToCartFeedback
+        handleFeedback={handleFeedback}
+        showFeedback={showFeedback}
+        // setShowFeedback={setShowFeedback}
+        productName={selectedProduct}
+      />
+      <div className='container m-auto px-2 text-gray-600'>
+        <header className='bg-yellow-300 h-100 flex justify-between items-center relative '>
+          <h1 className='sm:p-5 text-4xl font-bold m-5'>{titlePlural}</h1>
+          <div className='sm:p-5 text-4xl font-bold m-5 hover:text-white'>
+            <MdAddShoppingCart onClick={HandleAddToTheCart} size={30} />
+          </div>
+        </header>
+        {areAllPropertiesSelected === false && (
+          <small className='text-red-500 font-bold h-20'>Please, select all properties.</small>
+        )}
+
+        <div
+          data-testid='productDetails-component'
+          className='grid mx-4 sm:grid-cols-2  xl:grid-cols-3 2xl:grid-cols-4 gap-6 mt-5'
+        >
+          {displayProductProperites()}
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 
