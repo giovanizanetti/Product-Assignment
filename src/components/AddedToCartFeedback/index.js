@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useContext } from 'react'
 import Modal from 'react-modal'
 import { useHistory } from 'react-router-dom'
@@ -6,6 +7,14 @@ import { Store } from '../../globalState/Store'
 const AddedToCartFeedback = ({ productName, showFeedback, handleFeedback }) => {
   const history = useHistory()
   const { cart } = useContext(Store)
+=======
+import React from 'react'
+import Modal from 'react-modal'
+import { useHistory } from 'react-router-dom'
+
+const AddedToCartFeedback = ({ productName, showFeedback, handleFeedback }) => {
+  const history = useHistory()
+>>>>>>> e33cb0ab4a193ffd2d0a80f93370721df2814407
   const handleClose = (e) => {
     const value = e.target.innerText
     const checkout = 'GO TO CHECKOUT'
@@ -33,6 +42,7 @@ const AddedToCartFeedback = ({ productName, showFeedback, handleFeedback }) => {
     >
       <p className='text-center'>{`${productName} was added to the cart`}</p>
       <p className='text-center'>{`You Cart has ${cart?.length} product`}</p>
+      
       <div className='flex justify-center p-3'>
         <button
           className='bg-gray-100 bg-blue-500 text-white  font-bold uppercase text-sm sm:px-6 sm:py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none p-2 ease-linear transition-all duration-150 mr-2'
