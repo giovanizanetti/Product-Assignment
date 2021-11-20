@@ -6,6 +6,7 @@ import { Store } from '../../globalState/Store'
 const AddedToCartFeedback = ({ productName, showFeedback, handleFeedback }) => {
   const history = useHistory()
   const { cart } = useContext(Store)
+
   const handleClose = (e) => {
     const value = e.target.innerText
     const checkout = 'GO TO CHECKOUT'
