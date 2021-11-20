@@ -18,21 +18,19 @@ const AddedToCartFeedback = ({ productName, showFeedback, handleFeedback }) => {
   return (
     <Modal
       isOpen={showFeedback}
-      // onAfterOpen={afterOpenModal}
       onRequestClose={handleClose}
-      // style={customStyles}
       contentLabel={`${productName} was added to the cart`}
       shouldCloseOnEsc={true}
       style={{
         content: {
           backgroundColor: '#f58c08',
           height: '25vh',
-          // width: '30vw',
         },
       }}
     >
       <p className='text-center'>{`${productName} was added to the cart`}</p>
       <p className='text-center'>{`You Cart has ${cart?.length} product`}</p>
+
       <div className='flex justify-center p-3'>
         <button
           className='bg-gray-100 bg-blue-500 text-white  font-bold uppercase text-sm sm:px-6 sm:py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none p-2 ease-linear transition-all duration-150 mr-2'
