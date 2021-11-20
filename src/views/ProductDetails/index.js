@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom'
 import { useProduct } from '../../hooks/useProduct'
 import { capitalize, removeStringUnderline } from '../../helpers'
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { Store } from '../../globalState/Store'
 
 import { MdAddShoppingCart } from 'react-icons/md'
@@ -24,6 +24,12 @@ const Product = () => {
     Therefore, fot hose producrts I have use the slug property instead.
   */
 
+  useEffect(() => {
+    if (selectedProduct === null) {
+      selectProduct(product)
+    }
+  }, [product, selectedProduct, selectProduct])
+
   const displayProductProperites = () => {
     const productProperties = currentProduct.properties.map((property, index) => {
       const { title, options, slug } = property || {}
@@ -32,7 +38,7 @@ const Product = () => {
         <div key={property.slug} className='container'>
           <div className='h-25 sm:mx-3'>
             <h2 className='text-lg mb-2 font-bold md:text-left break-normal'>{capitalize(propertyTitle)}</h2>
-            <ProductOptions options={options} index={index} />
+            <ProductOptions options={options} index={index} property={propertyTitle} />
           </div>
         </div>
       )
@@ -40,10 +46,15 @@ const Product = () => {
     return productProperties
   }
   const HandleAddToTheCart = () => {
-    if (currentProduct.properties.length !== choosenProductOptions.length) {
-      console.log('Select all options')
+    console.log('properties length: ', currentProduct.properties.length)
+    console.log('choosenProiucts options', choosenProductOptions.length)
+    if (currentProduct.properties.length > choosenProductOptions.length) {
+      console.log('properties length: ', currentProduct.properties.length)
+      console.log('choosenProiucts options', choosenProductOptions.length)
       setAreAllPropertiesSelected(false)
     } else {
+      //add rout path with product name
+      !selectedProduct && selectProduct(product)
       setAreAllPropertiesSelected(null)
       addProductToCart(choosenProductOptions)
       setShowFeedback(true)

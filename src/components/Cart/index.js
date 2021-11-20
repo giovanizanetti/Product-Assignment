@@ -1,7 +1,11 @@
+import { useContext } from 'react'
 import { useHistory } from 'react-router'
+import CartItem from './CartItem'
+import { Store } from '../../globalState/Store'
 
 const Cart = () => {
   const history = useHistory()
+  const { cart, addProductToCart } = useContext(Store)
 
   return (
     <>
@@ -17,8 +21,8 @@ const Cart = () => {
           {/*content*/}
           <div className='border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none'>
             {/*header*/}
-            <div className='flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t'>
-              <h3 className='text-3xl font-semibold'>Shopping Cart</h3>
+            <div className='flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t items-center'>
+              <h3 className='sm:text-xl md:3xl font-semibold'>Shopping Cart</h3>
               <button
                 onClick={() => history.goBack()}
                 className='p-1 ml-auto bg-transparent border-0 float-right text-3xl tex- leading-none font-semibold outline-none focus:outline-none hover:text-purple-500'
@@ -27,13 +31,18 @@ const Cart = () => {
               </button>
             </div>
             {/*body*/}
-            <div className='relative p-6 flex-auto'>
-              <p className='my-4 text-blueGray-500 text-lg leading-relaxed'>
-                I always felt like I could do anything. That’s the main thing people are controlled by! Thoughts- their
-                perception of themselves! They're slowed down by their perception of themselves. If you're taught you
-                can’t do anything, you won’t do anything. I was taught I could do everything.
-              </p>
-            </div>
+            {cart && !cart.length ? (
+              <strong className='p-10 sm:m-10'>The shopping cart is empty</strong>
+            ) : (
+              <div className='relative p-6 flex-auto '>
+                <ul>
+                  {cart &&
+                    cart.map((cartItem) => (
+                      <CartItem key={cartItem?.name} item={cartItem} addProductToCart={addProductToCart} />
+                    ))}
+                </ul>
+              </div>
+            )}
             {/*footer*/}
             <div className='flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b'>
               <button

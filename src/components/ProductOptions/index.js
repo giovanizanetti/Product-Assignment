@@ -5,7 +5,7 @@ import CustomOption from '../CustomOption'
 import 'rc-slider/assets/index.css'
 import { Store } from '../../globalState/Store'
 
-const ProdutOptions = ({ options, index }) => {
+const ProdutOptions = ({ options, index, property }) => {
   const { addProductOption, cart } = useContext(Store)
   const inputRef = useRef()
   const [selected, setSelected] = useState(null)
@@ -30,6 +30,9 @@ const ProdutOptions = ({ options, index }) => {
   })
 
   const handleSelect = (option) => {
+    //add property name to the option object
+    option.property = property
+    console.log(option)
     if (!option) return setSelected(null)
 
     const hasCustomSizes = option.value.hasOwnProperty('customSizes')

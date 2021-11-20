@@ -1,5 +1,5 @@
 import React, { createContext, useReducer, useEffect } from 'react'
-import { SELECT_PRODUCT, ADD_PRODUCT_OPTION, ADD_PRODUCT_TO_CART } from '../types'
+import { SELECT_PRODUCT, ADD_PRODUCT_OPTION, ADD_PRODUCT_TO_CART, UPDATE_CART_PRODUCT } from '../types'
 import AppReducer from '../AppReducer'
 
 import BusinesscardImg from '../../assets/businesscard.svg'
@@ -35,15 +35,18 @@ export const StoreProvider = ({ children }) => {
   }
 
   const addProductOption = (option) => {
+    console.log(option)
     dispatch({
       type: ADD_PRODUCT_OPTION,
       payload: option,
     })
   }
   const addProductToCart = (choosenOptions) => {
+    const defaultProductCount = 1
     const productWithNameAndOptions = {
-      name: selectedProduct,
+      name: state.selectedProduct,
       choosenOptions,
+      count: defaultProductCount,
     }
 
     dispatch({
