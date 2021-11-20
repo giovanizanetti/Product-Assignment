@@ -40,10 +40,15 @@ export const StoreProvider = ({ children }) => {
       payload: option,
     })
   }
-  const addProductToCart = (product) => {
+  const addProductToCart = (choosenOptions) => {
+    const productWithNameAndOptions = {
+      name: selectedProduct,
+      choosenOptions,
+    }
+
     dispatch({
       type: ADD_PRODUCT_TO_CART,
-      payload: product,
+      payload: productWithNameAndOptions,
     })
   }
 

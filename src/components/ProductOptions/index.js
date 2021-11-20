@@ -38,6 +38,7 @@ const ProdutOptions = ({ options, index }) => {
       setIsOpen(true)
       return setCustomSizes(customSizes)
     }
+    //BUG: WHEN UNSELECT OPTION, THE OPTION IS NOT REMOVED FROM THE OPTION ARRAY
 
     setSelected(option)
     addProductOption(option)

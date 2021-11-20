@@ -6,13 +6,12 @@ import { StoreProvider } from './globalState/Store'
 
 function App() {
   const [showModal, setShowModal] = useState(false)
-  const [cartCount, setCartCount] = useState(0)
 
   return (
     <div data-testid='app-component' className='App'>
       <Router>
         <StoreProvider>
-          <Header showModal={showModal} setShowModal={setShowModal} cartCount={cartCount} setCartCount={setCartCount} />
+          <Header showModal={showModal} setShowModal={setShowModal} />
           {Routes}
         </StoreProvider>
       </Router>

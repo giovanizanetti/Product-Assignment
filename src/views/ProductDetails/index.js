@@ -48,7 +48,6 @@ const Product = () => {
       addProductToCart(choosenProductOptions)
       setShowFeedback(true)
     }
-    //TODO: DISPLAY MESSAGE TO THE USER WHEN THE PRODUCT IS ADDED TO THE CAR
   }
 
   const handleFeedback = () => {

@@ -1,15 +1,8 @@
+import { useContext } from 'react'
+import { Store } from '../../globalState/Store'
 import Product from '../Product'
-
-import BusinesscardImg from '../../assets/businesscard.svg'
-import Flyer from '../../assets/flyer.svg'
-import Poster from '../../assets/poster.svg'
-
 const ProductsList = () => {
-  const products = [
-    { name: 'business cards', id: 1, image: BusinesscardImg },
-    { name: 'flyers', id: 2, image: Flyer },
-    { name: 'posters', id: 3, image: Poster },
-  ]
+  const { products } = useContext(Store)
 
   if (!products?.length) return <strong>Sorry! There are no products.</strong>
 
