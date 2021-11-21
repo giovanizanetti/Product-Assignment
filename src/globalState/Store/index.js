@@ -1,5 +1,11 @@
 import React, { createContext, useReducer, useEffect } from 'react'
-import { SELECT_PRODUCT, ADD_PRODUCT_OPTION, ADD_PRODUCT_TO_CART, DELETE_PRODUCT_FROM_THE_CART } from '../types'
+import {
+  SELECT_PRODUCT,
+  ADD_PRODUCT_OPTION,
+  ADD_PRODUCT_TO_CART,
+  DELETE_PRODUCT_FROM_THE_CART,
+  EMPTY_CART,
+} from '../types'
 import AppReducer from '../AppReducer'
 import { v4 as generateUUID } from 'uuid'
 
@@ -53,7 +59,6 @@ export const StoreProvider = ({ children }) => {
       choosenOptions,
       // count: defaultProductCount,
     }
-
     dispatch({
       type: ADD_PRODUCT_TO_CART,
       payload: productWithNameAndOptions,
@@ -61,10 +66,15 @@ export const StoreProvider = ({ children }) => {
   }
 
   const deleteProductFromCart = (productId) => {
-    console.log('FROM action', productId)
     dispatch({
       type: DELETE_PRODUCT_FROM_THE_CART,
       payload: productId,
+    })
+  }
+
+  const emptyCart = () => {
+    dispatch({
+      type: EMPTY_CART,
     })
   }
 
@@ -79,6 +89,7 @@ export const StoreProvider = ({ children }) => {
         selectProduct,
         addProductToCart,
         deleteProductFromCart,
+        emptyCart,
         dispatch,
       }}
     >

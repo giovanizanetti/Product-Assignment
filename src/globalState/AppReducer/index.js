@@ -1,4 +1,10 @@
-import { ADD_PRODUCT_OPTION, SELECT_PRODUCT, ADD_PRODUCT_TO_CART, DELETE_PRODUCT_FROM_THE_CART } from '../types'
+import {
+  ADD_PRODUCT_OPTION,
+  SELECT_PRODUCT,
+  ADD_PRODUCT_TO_CART,
+  DELETE_PRODUCT_FROM_THE_CART,
+  EMPTY_CART,
+} from '../types'
 
 const AppReducer = (state = {}, action) => {
   console.log(action)
@@ -22,10 +28,14 @@ const AppReducer = (state = {}, action) => {
       }
     case DELETE_PRODUCT_FROM_THE_CART:
       const filteredItems = state.cart.length && state.cart.filter((item) => item.id !== action.payload)
-      console.log(filteredItems)
       return {
         ...state,
         cart: filteredItems,
+      }
+    case EMPTY_CART:
+      return {
+        ...state,
+        cart: [],
       }
     default:
       return state
