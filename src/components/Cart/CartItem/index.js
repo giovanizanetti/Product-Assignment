@@ -10,7 +10,6 @@ const CartItem = ({ item }) => {
   //TODO
 
   //COMPARE EXCLUDES
-  //CLEAR CONSOLE.LOGS
   //CHECK FOR BUGS
   //MAKE A README FILE
   //CHECK IF STYLE IS RESPONSIVE
@@ -46,20 +45,15 @@ const CartItem = ({ item }) => {
               −
             </span>
           </button>
-          <input
-            onChange={(e) => {
-              console.log(e.target)
-            }}
-            type='number'
-            className='outline-none focus:outline-none text-center w-7 bg-gray-200 font-bold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none'
-            name='custom-input-number'
-            value={productCount}
-          ></input>
+
+          <span className=' pl-2.5 outline-none focus:outline-none text-center w-7 bg-gray-200 font-bold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none'>
+            {productCount}
+          </span>
           <button
             data-action='increment'
             className='bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-7 px-2 rounded-r cursor-pointer'
           >
-            <span onClick={() => handleIncreaseQuantity(item)} className='m-auto text-2xl font-thin' text-xs>
+            <span onClick={() => handleIncreaseQuantity(item)} className='m-auto text-2xl font-thin'>
               +
             </span>
           </button>
