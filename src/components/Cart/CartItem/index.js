@@ -16,7 +16,7 @@ const CartItem = ({ item }) => {
 
   const handleReduceQuantity = () => {
     if (productCount === 1) {
-      const isDelete = window.confirm('DO you want delete this product?')
+      const isDelete = window.confirm('D you want to delete this product?')
       if (isDelete) {
         deleteProductFromCart(item.id)
       }
