@@ -11,9 +11,15 @@ const AppReducer = (state = {}, action) => {
   console.log(state)
   switch (action.type) {
     case ADD_PRODUCT_OPTION:
+      //check for duplicated
+      const updatedOptions = state.choosenProductOptions.filter(
+        (choosenOption) => choosenOption.property !== action.payload.property
+      )
+
+      console.log(updatedOptions)
       return {
         ...state,
-        choosenProductOptions: [...state.choosenProductOptions, action.payload],
+        choosenProductOptions: [...updatedOptions, action.payload],
       }
     case SELECT_PRODUCT:
       return {

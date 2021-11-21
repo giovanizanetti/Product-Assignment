@@ -43,6 +43,7 @@ const ProdutOptions = ({ options, index, property }) => {
     }
     option.property = property
     setSelected(option)
+
     addProductOption(option)
   }
   return (
