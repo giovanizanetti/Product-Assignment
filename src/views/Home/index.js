@@ -3,7 +3,7 @@ import ProductsList from '../../components/ProductsList'
 
 const Home = () => {
   return (
-    <div data-testid='home-component'>
+    <div className='p-5 sm:p-10' data-testid='home-component'>
       <ProductsList />
     </div>
   )

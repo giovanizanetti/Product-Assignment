@@ -12,7 +12,7 @@ function App() {
       <StoreProvider>
         <Router>
           <Header showModal={showModal} setShowModal={setShowModal} />
-          {Routes}
+          <div className='pb-10 sm:p-10'>{Routes}</div>
         </Router>
       </StoreProvider>
     </div>
