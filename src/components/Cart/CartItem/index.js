@@ -3,11 +3,21 @@ import { RiDeleteBin6Line } from 'react-icons/ri'
 import { Store } from '../../../globalState/Store'
 
 const CartItem = ({ item, addProductToCart }) => {
-  const { selectedProduct } = useContext(Store)
+  const { deleteProductFromCart } = useContext(Store)
   const { name, choosenOptions } = item || {}
   const [productCount, setProductCount] = useState(1)
 
-  const reduceQuantity = () => {
+  //TODO
+  //DELETE ITEM FROM THE CART
+  //SAVE ITEMS TO THE LOCAL STORAGE
+  //ADD PAY BUTTOM AND GIT -> YOU DID IT!
+  //CHECK FOR BUGS
+  //COMPARE EXCLUDES
+  //CLEAR CONSOLE.LOGS
+  //MAKE A README FILE
+  //CHECK IF STYLE IS RESPONSIVE
+
+  const handleReduceQuantity = () => {
     if (productCount === 1) {
       //TODO: ASK IF THE USER WANTS TO REMOVE THE ITEM FROM THE CART
       //THE USER CONFIRM OR CANCEL
@@ -21,8 +31,7 @@ const CartItem = ({ item, addProductToCart }) => {
   }
 
   const handleIncreaseQuantity = () => {
-    //TODO: Push a copy to global state cart
-    setProductCount((previousCount) => previousCount + 1) //modify!!
+    setProductCount((previousCount) => previousCount + 1)
   }
 
   return (
@@ -33,7 +42,7 @@ const CartItem = ({ item, addProductToCart }) => {
             data-action='decrement'
             className=' bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-7 rounded-l cursor-pointer outline-none'
           >
-            <span onClick={reduceQuantity} className='m-auto text-2xl font-thin text-xs'>
+            <span onClick={handleReduceQuantity} className='m-auto text-2xl font-thin text-xs'>
               −
             </span>
           </button>
@@ -77,7 +86,10 @@ const CartItem = ({ item, addProductToCart }) => {
       <span className='px-3'>
         <span> &euro;</span> <span>0,00</span>
       </span>
-      <span className='px-3 text-3xl text-red-600 hover:text-red-800 cursor-pointer'>
+      <span
+        onClick={() => deleteProductFromCart(item.id)}
+        className='px-3 text-3xl text-red-600 hover:text-red-800 cursor-pointer'
+      >
         <RiDeleteBin6Line />
       </span>
     </li>

@@ -1,6 +1,7 @@
 import React, { createContext, useReducer, useEffect } from 'react'
-import { SELECT_PRODUCT, ADD_PRODUCT_OPTION, ADD_PRODUCT_TO_CART, UPDATE_CART_PRODUCT } from '../types'
+import { SELECT_PRODUCT, ADD_PRODUCT_OPTION, ADD_PRODUCT_TO_CART, DELETE_PRODUCT_FROM_THE_CART } from '../types'
 import AppReducer from '../AppReducer'
+import { v4 as generateUUID } from 'uuid'
 
 import BusinesscardImg from '../../assets/businesscard.svg'
 import Flyer from '../../assets/flyer.svg'
@@ -42,16 +43,25 @@ export const StoreProvider = ({ children }) => {
     })
   }
   const addProductToCart = (choosenOptions) => {
-    const defaultProductCount = 1
+    // const defaultProductCount = 1
     const productWithNameAndOptions = {
       name: state.selectedProduct,
+      id: generateUUID(),
       choosenOptions,
-      count: defaultProductCount,
+      // count: defaultProductCount,
     }
 
     dispatch({
       type: ADD_PRODUCT_TO_CART,
       payload: productWithNameAndOptions,
+    })
+  }
+
+  const deleteProductFromCart = (productId) => {
+    console.log('FROM action', productId)
+    dispatch({
+      type: DELETE_PRODUCT_FROM_THE_CART,
+      payload: productId,
     })
   }
 
@@ -65,6 +75,7 @@ export const StoreProvider = ({ children }) => {
         addProductOption,
         selectProduct,
         addProductToCart,
+        deleteProductFromCart,
         dispatch,
       }}
     >

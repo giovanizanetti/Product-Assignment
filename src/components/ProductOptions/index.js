@@ -31,18 +31,17 @@ const ProdutOptions = ({ options, index, property }) => {
 
   const handleSelect = (option) => {
     //add property name to the option object
-    option.property = property
-    console.log(option)
+
     if (!option) return setSelected(null)
 
     const hasCustomSizes = option.value.hasOwnProperty('customSizes')
     if (hasCustomSizes) {
+      option.property = property
       const { customSizes } = option.value
       setIsOpen(true)
       return setCustomSizes(customSizes)
     }
-    //BUG: WHEN UNSELECT OPTION, THE OPTION IS NOT REMOVED FROM THE OPTION ARRAY
-
+    option.property = property
     setSelected(option)
     addProductOption(option)
   }
