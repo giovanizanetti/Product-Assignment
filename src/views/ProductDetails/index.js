@@ -10,13 +10,20 @@ import ProductOptions from '../../components/ProductOptions'
 import AddedToCartFeedback from '../../components/AddedToCartFeedback'
 
 const Product = () => {
+  // const history = useHistory()
   const [areAllPropertiesSelected, setAreAllPropertiesSelected] = useState(null)
+  // console.log(useParams())
   const { product } = useParams()
   const currentProduct = useProduct(product)
-  const { titlePlural } = currentProduct
+  const { titlePlural } = currentProduct || {}
   const { choosenProductOptions, addProductToCart, selectedProduct, selectProduct } = useContext(Store) || {}
   const [showFeedback, setShowFeedback] = useState(false)
 
+  //TODO EXCLUDES
+
+  // console.log(currentProduct.excludes.reduce((a, b) => a + b))
+  // console.log(currentProduct.properties)
+  console.log(currentProduct.excludes.flat())
   /*
     I realized that not all product properties has a title. 
     I did the assumption that they are important. 
