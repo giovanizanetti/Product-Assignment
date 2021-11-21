@@ -9,12 +9,12 @@ function App() {
 
   return (
     <div data-testid='app-component' className='App'>
-      <Router>
-        <StoreProvider>
+      <StoreProvider>
+        <Router>
           <Header showModal={showModal} setShowModal={setShowModal} />
           {Routes}
-        </StoreProvider>
-      </Router>
+        </Router>
+      </StoreProvider>
     </div>
   )
 }

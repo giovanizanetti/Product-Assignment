@@ -68,12 +68,7 @@ const Product = () => {
 
   return (
     <>
-      <AddedToCartFeedback
-        handleFeedback={handleFeedback}
-        showFeedback={showFeedback}
-        // setShowFeedback={setShowFeedback}
-        productName={selectedProduct}
-      />
+      <AddedToCartFeedback handleFeedback={handleFeedback} showFeedback={showFeedback} productName={selectedProduct} />
       <div className='container m-auto px-2 text-gray-600'>
         <header className='bg-yellow-300 h-100 flex justify-between items-center relative '>
           <h1 className='sm:p-5 text-4xl font-bold m-5'>{titlePlural}</h1>
