@@ -5,12 +5,13 @@ import { Store } from '../../globalState/Store'
 
 const Cart = () => {
   const history = useHistory()
-  const { cart, addProductToCart, emptyCart } = useContext(Store)
+  const { cart, emptyCart } = useContext(Store)
 
   const handleCheckout = () => {
     emptyCart()
     history.push('/cart/checkout')
   }
+  const uniqueProducts = [...new Set(cart.map((item) => item))]
 
   return (
     <>
@@ -41,10 +42,7 @@ const Cart = () => {
             ) : (
               <div className='relative p-6 flex-auto '>
                 <ul>
-                  {cart &&
-                    cart.map((cartItem) => (
-                      <CartItem key={cartItem?.id} item={cartItem} addProductToCart={addProductToCart} />
-                    ))}
+                  {uniqueProducts && uniqueProducts.map((cartItem) => <CartItem key={cartItem?.id} item={cartItem} />)}
                 </ul>
               </div>
             )}

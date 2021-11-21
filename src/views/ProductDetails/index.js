@@ -19,9 +19,8 @@ const Product = () => {
 
   /*
     I realized that not all product properties has a title. 
-    I did the assumption that they are important
-    otherwise they should be there. 
-    Therefore, fot hose producrts I have use the slug property instead.
+    I did the assumption that they are important. 
+    Therefore, for those products I have used the slug property instead.
   */
 
   useEffect(() => {
@@ -45,18 +44,16 @@ const Product = () => {
     })
     return productProperties
   }
-  const HandleAddToTheCart = () => {
-    console.log('properties length: ', currentProduct.properties.length)
-    console.log('choosenProiucts options', choosenProductOptions.length)
+  const handleAddToTheCart = () => {
     if (currentProduct.properties.length > choosenProductOptions.length) {
-      console.log('properties length: ', currentProduct.properties.length)
-      console.log('choosenProiucts options', choosenProductOptions.length)
       setAreAllPropertiesSelected(false)
     } else {
-      //add rout path with product name
       !selectedProduct && selectProduct(product)
       setAreAllPropertiesSelected(null)
-      addProductToCart(choosenProductOptions)
+      addProductToCart({
+        name: product,
+        choosenOptions: choosenProductOptions,
+      })
       setShowFeedback(true)
     }
   }
@@ -73,7 +70,7 @@ const Product = () => {
         <header className='bg-yellow-300 h-100 flex justify-between items-center relative '>
           <h1 className='sm:p-5 text-4xl font-bold m-5'>{titlePlural}</h1>
           <div className='sm:p-5 text-4xl font-bold m-5 hover:text-white'>
-            <MdAddShoppingCart onClick={HandleAddToTheCart} size={30} />
+            <MdAddShoppingCart onClick={handleAddToTheCart} size={30} />
           </div>
         </header>
         {areAllPropertiesSelected === false && (

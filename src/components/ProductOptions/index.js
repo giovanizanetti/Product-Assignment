@@ -12,7 +12,6 @@ const ProdutOptions = ({ options, index, property }) => {
   const [customSizes, setCustomSizes] = useState(null)
   const [isOpen, setIsOpen] = useState(false)
 
-  //test
   useEffect(() => {
     setSelected(null)
   }, [cart])

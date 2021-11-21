@@ -45,23 +45,17 @@ export const StoreProvider = ({ children }) => {
   }
 
   const addProductOption = (option) => {
-    console.log(option)
     dispatch({
       type: ADD_PRODUCT_OPTION,
       payload: option,
     })
   }
-  const addProductToCart = (choosenOptions) => {
-    // const defaultProductCount = 1
-    const productWithNameAndOptions = {
-      name: state.selectedProduct,
-      id: generateUUID(),
-      choosenOptions,
-      // count: defaultProductCount,
-    }
+
+  const addProductToCart = (product) => {
+    product.id = generateUUID()
     dispatch({
       type: ADD_PRODUCT_TO_CART,
-      payload: productWithNameAndOptions,
+      payload: product,
     })
   }
 

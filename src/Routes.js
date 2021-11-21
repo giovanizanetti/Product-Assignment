@@ -13,7 +13,9 @@ const Routes = (
     <Route path='/' exact component={Home} />
     <Route path='/cart' exact component={Cart} />
     <Route path='/:product' exact component={ProductDetails} />
-    <Route path='/cart/checkout' exact component={Checkout} />
+    <Route path='/cart/checkout' exact>
+      {Checkout}
+    </Route>
     <Route component={NoMatchPage} />
   </Switch>
 )

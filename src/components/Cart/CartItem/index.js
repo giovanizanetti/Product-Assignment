@@ -2,7 +2,7 @@ import { useState, useContext } from 'react'
 import { RiDeleteBin6Line } from 'react-icons/ri'
 import { Store } from '../../../globalState/Store'
 
-const CartItem = ({ item, addProductToCart }) => {
+const CartItem = ({ item }) => {
   const { deleteProductFromCart } = useContext(Store)
   const { name, choosenOptions } = item || {}
   const [productCount, setProductCount] = useState(1)
@@ -17,10 +17,10 @@ const CartItem = ({ item, addProductToCart }) => {
 
   const handleReduceQuantity = () => {
     if (productCount === 1) {
-      //TODO: ASK IF THE USER WANTS TO REMOVE THE ITEM FROM THE CART
-      //THE USER CONFIRM OR CANCEL
-      //FIELTER OUT THE PRODUCT IF YES
-      // setProductCount(productCount - 1)
+      const isDelete = window.confirm('DO you want delete this product?')
+      if (isDelete) {
+        deleteProductFromCart(item.id)
+      }
     } else if (productCount > 1) {
       setProductCount(productCount - 1)
     } else {
@@ -28,8 +28,10 @@ const CartItem = ({ item, addProductToCart }) => {
     }
   }
 
-  const handleIncreaseQuantity = () => {
+  const handleIncreaseQuantity = (product) => {
     setProductCount((previousCount) => previousCount + 1)
+    delete product.id
+    setProductCount((count) => count++)
   }
 
   return (
@@ -57,7 +59,7 @@ const CartItem = ({ item, addProductToCart }) => {
             data-action='increment'
             className='bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-7 px-2 rounded-r cursor-pointer'
           >
-            <span onClick={handleIncreaseQuantity} className='m-auto text-2xl font-thin' text-xs>
+            <span onClick={() => handleIncreaseQuantity(item)} className='m-auto text-2xl font-thin' text-xs>
               +
             </span>
           </button>
@@ -72,9 +74,7 @@ const CartItem = ({ item, addProductToCart }) => {
             choosenOptions.map(({ label, property }, index) => {
               return (
                 <li key={index} className='text-left'>
-                  <div className='font-bold' text>
-                    {property}
-                  </div>
+                  <div className='font-bold'>{property}</div>
                   <div className='text-sm ml-5'> {label}</div>
                 </li>
               )
