@@ -8,7 +8,7 @@ const CartItem = ({ item, addProductToCart }) => {
   const [productCount, setProductCount] = useState(1)
 
   //TODO
-  //DELETE ITEM FROM THE CART
+
   //SAVE ITEMS TO THE LOCAL STORAGE
   //ADD PAY BUTTOM AND GIT -> YOU DID IT!
   //CHECK FOR BUGS

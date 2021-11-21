@@ -7,13 +7,16 @@ import BusinesscardImg from '../../assets/businesscard.svg'
 import Flyer from '../../assets/flyer.svg'
 import Poster from '../../assets/poster.svg'
 
+import { getItemsFromLocalStorage, addItemsToLocalStorage } from '../../helpers'
+const CART = 'Cart'
+
 const initialState = {
   products: [
     { name: 'business cards', id: 1, image: BusinesscardImg },
     { name: 'flyers', id: 2, image: Flyer },
     { name: 'posters', id: 3, image: Poster },
   ],
-  cart: [],
+  cart: getItemsFromLocalStorage(CART, []),
   choosenProductOptions: [],
   selectedProduct: null,
 }
@@ -24,7 +27,7 @@ export const StoreProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState)
   const { products, choosenProductOptions, selectedProduct, cart } = state || {}
 
-  useEffect(() => console.log(state), [state])
+  useEffect(() => addItemsToLocalStorage(CART, cart), [cart])
 
   // Actions for changing state
 
