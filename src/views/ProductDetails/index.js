@@ -9,12 +9,14 @@ import { MdAddShoppingCart } from 'react-icons/md'
 import ProductOptions from '../../components/ProductOptions'
 import AddedToCartFeedback from '../../components/AddedToCartFeedback'
 
-const Product = () => {
+const ProductDetails = ({ type }) => {
+  console.log(type)
   // const history = useHistory()
   const [areAllPropertiesSelected, setAreAllPropertiesSelected] = useState(null)
-  // console.log(useParams())
-  const { product } = useParams()
-  const currentProduct = useProduct(product)
+  console.log(useParams())
+  // const { id } = useParams()
+  // console.log(product)
+  const currentProduct = useProduct(type)
   const { titlePlural } = currentProduct || {}
   const { choosenProductOptions, addProductToCart, selectedProduct, selectProduct } = useContext(Store) || {}
   const [showFeedback, setShowFeedback] = useState(false)
@@ -32,9 +34,9 @@ const Product = () => {
 
   useEffect(() => {
     if (selectedProduct === null) {
-      selectProduct(product)
+      selectProduct(currentProduct)
     }
-  }, [product, selectedProduct, selectProduct])
+  }, [currentProduct, selectedProduct, selectProduct])
 
   const displayProductProperites = () => {
     const productProperties = currentProduct.properties.map((property, index) => {
@@ -55,10 +57,10 @@ const Product = () => {
     if (currentProduct.properties.length > choosenProductOptions.length) {
       setAreAllPropertiesSelected(false)
     } else {
-      !selectedProduct && selectProduct(product)
+      !selectedProduct && selectProduct(currentProduct)
       setAreAllPropertiesSelected(null)
       addProductToCart({
-        name: product,
+        name: currentProduct,
         choosenOptions: choosenProductOptions,
       })
       setShowFeedback(true)
@@ -95,4 +97,4 @@ const Product = () => {
   )
 }
 
-export default Product
+export default ProductDetails

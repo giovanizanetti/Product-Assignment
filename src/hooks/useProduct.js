@@ -1,11 +1,10 @@
 import { businesscards } from '../data/businesscards'
-import { useHistory } from 'react-router-dom'
 import { flyers } from '../data/flyers'
 import { posters } from '../data/posters'
 
 export const useProduct = (productName) => {
-  const history = useHistory()
-  // if (!productName)
+  console.log(productName)
+
   if (!productName) return
   switch (productName) {
     case 'businesscards':
@@ -15,6 +14,6 @@ export const useProduct = (productName) => {
     case 'flyers':
       return flyers
     default:
-      return history.push('/')
+      return {}
   }
 }

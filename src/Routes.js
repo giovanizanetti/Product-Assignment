@@ -12,9 +12,17 @@ const Routes = (
   <Switch>
     <Route path='/' exact component={Home} />
     <Route path='/cart' exact component={Cart} />
-    <Route path='/:product' exact component={ProductDetails} />
+    <Route path='/product/flyers' exact>
+      <ProductDetails type='flyers' />
+    </Route>
+    <Route path='/product/posters' exact>
+      <ProductDetails type='posters' />
+    </Route>
+    <Route path='/product/businesscards' exact>
+      <ProductDetails type='businesscards' />
+    </Route>
     <Route path='/cart/checkout' exact component={Checkout}></Route>
-    <Route path='*' component={NoMatchPage} />
+    <Route component={NoMatchPage} />
   </Switch>
 )
 

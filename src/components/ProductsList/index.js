@@ -18,7 +18,7 @@ const ProductsList = () => {
               key={id}
               onClick={() => selectProduct(name)}
               data-testid='product-component'
-              to={`/${removeSpaceBetween(name)}`}
+              to={`/product/${removeSpaceBetween(name)}`}
               className='my-3 px-1 w-full md:w-1/2 md:p-3 lg:my-4 lg:px-4 lg:w-1/3 sm:transform transition duration-500 hover:scale-110 lg:hover:scale-105'
             >
               <Product productName={name} image={image} />
