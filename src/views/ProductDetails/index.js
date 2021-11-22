@@ -1,4 +1,3 @@
-import { useParams } from 'react-router-dom'
 import { useProduct } from '../../hooks/useProduct'
 import { capitalize, removeStringUnderline } from '../../helpers'
 import { useState, useContext, useEffect } from 'react'
@@ -10,27 +9,19 @@ import ProductOptions from '../../components/ProductOptions'
 import AddedToCartFeedback from '../../components/AddedToCartFeedback'
 
 const ProductDetails = ({ type }) => {
-  console.log(type)
-  // const history = useHistory()
   const [areAllPropertiesSelected, setAreAllPropertiesSelected] = useState(null)
-  console.log(useParams())
-  // const { id } = useParams()
-  // console.log(product)
   const currentProduct = useProduct(type)
   const { titlePlural } = currentProduct || {}
   const { choosenProductOptions, addProductToCart, selectedProduct, selectProduct } = useContext(Store) || {}
   const [showFeedback, setShowFeedback] = useState(false)
 
   //TODO EXCLUDES
+  // CHECK THE USERS CHOICES AGAINST THE groupedFlatenExcluded
+  // IF MORE THANM ONE OPTION IS TRUTHY CHOICE IS NOT VALID
 
-  // console.log(currentProduct.excludes.reduce((a, b) => a + b))
-  // console.log(currentProduct.properties)
-  console.log(currentProduct.excludes.flat())
-  /*
-    I realized that not all product properties has a title. 
-    I did the assumption that they are important. 
-    Therefore, for those products I have used the slug property instead.
-  */
+  // const groupedFlatenExcluded = currentProduct.excludes.map((item) => item.map((subitem) => subitem.options).flat(1))
+  // const groupedFlatenExcluded = currentProduct.excludes.map((item) => item.map((subitem) => subitem.options))
+  // console.log(groupedFlatenExcluded)
 
   useEffect(() => {
     if (selectedProduct === null) {
@@ -38,9 +29,16 @@ const ProductDetails = ({ type }) => {
     }
   }, [currentProduct, selectedProduct, selectProduct])
 
+  /*
+    I realized that not all product properties has a title. 
+    I did the assumption that they are important. 
+    Therefore, for those products I have used the slug property instead.
+  */
+
   const displayProductProperites = () => {
     const productProperties = currentProduct.properties.map((property, index) => {
       const { title, options, slug } = property || {}
+
       const propertyTitle = title ? title : removeStringUnderline(slug)
       return (
         <div key={property.slug} className='container'>
@@ -60,7 +58,7 @@ const ProductDetails = ({ type }) => {
       !selectedProduct && selectProduct(currentProduct)
       setAreAllPropertiesSelected(null)
       addProductToCart({
-        name: currentProduct,
+        name: titlePlural,
         choosenOptions: choosenProductOptions,
       })
       setShowFeedback(true)

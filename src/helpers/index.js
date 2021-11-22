@@ -13,3 +13,14 @@ export const getItemsFromLocalStorage = (key, defaultValue) => {
 }
 
 export const addItemsToLocalStorage = (key, items) => localStorage.setItem('Cart', JSON.stringify(items))
+
+export function findComomElements(arr1, arr2, array) {
+  // arr1.some((item, index) => {
+  //   if (!arr2.includes(item)) {
+  //     // console.log(array[index])
+  //     filteredArray.push(array[index])
+  //   }
+  // })
+
+  return arr1.filter((item, index) => !arr2.includes(item))
+}
