@@ -1,70 +1,122 @@
-# Getting Started with Create React App
+# My Products Assignment
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## [Check out the deployed version here!](https://giovani-zanetti-products-assignment.netlify.app/)
 
-## Available Scripts
+## What this project is about
 
-In the project directory, you can run:
+This project is part of a take-home assignment given by a company to check whether my skills are enough for a front-end software developer position.
 
-### `yarn start`
+## Table of contents:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- **[Installation](#installation)**
+- **[Technologies used](#technologies-used)**
+- **[Goals for this project](#goals-for-this-project)**
+- **[Requirements](#requirements)**
+- **[Features built so far ](#features-built-so-far)**
+- **[create-react-app-docs](#create-react-app)**
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Installation
 
-### `yarn test`
+You easily close this repo on your machine by using one of the following commands:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+`git@github.com:giovanizanetti/Products-Assignment.git`
 
-### `yarn build`
+or
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+`https://github.com/giovanizanetti/Products-Assignment.git`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Once you have cloned the repo, you can run:
+`yarn install` or `npm install` to download all the dependencies needed for the project to work on your machine.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Technologies used
 
-### `yarn eject`
+#### Click links to see the documentation for those technologies 👇👇👇
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- **[React](https://reactjs.org/docs/getting-started.html)**
+  - **[React hooks](https://reactjs.org/docs/hooks-intro.html)**
+  - **[React `context API` with `useReducer` hook for managing the global state](https://reactjs.org/docs/context.html)**
+- **[React-Router](https://v5.reactrouter.com/web/guides/quick-start)**
+- **[React-Modal](https://www.npmjs.com/package/react-modal)**
+- **[React-Icons](https://react-icons.github.io/react-icons/)**
+- **[TailwindCSS](https://tailwindcss.com/docs)**
+- **[Netlify](https://www.netlify.com/)**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Goals for this project:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Get an offer to work for this company.
+- Make a working application.
+- Practice software development. Practice and learn more about **[TailwindCSS](https://tailwindcss.com/docs)**
+- Showcase some of what I can do.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Requirements
 
-## Learn More
+1.  Navigate via a menu to a product:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+        /product/posters
+        /product/folders
+        /product/businesscards
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+2.  See a product selector with available options (see json files in this Repo)
+3.  Be able to select different options in the product
+4.  Add a product to a cart
+    5.Validate if the options is a possible option via the 'excludes' property.
 
-### Code Splitting
+## Features built so far
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### 1. Cards menu on the home view `/`
 
-### Analyzing the Bundle Size
+- #### The cards are clickable and leads to the chosen product details component changing the route path. For instance: ` /product/posters`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### 2. Products details view `/product/:productName`
 
-### Making a Progressive Web App
+- #### Each product displays a list of all product properties
+- #### Each property comes with a selectable dropdown menu that displays all options for a given property
+- The user then can choose one option for each property
+- The user can change the option choice before adding the product to the cart
+- The option can be typed and/or searched on the selectable dropdown
+- When an option is selected, the background color of the option is changed to green color
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### 3. Add a product to the shopping cart `/cart`
 
-### Advanced Configuration
+- #### Validate if all the properties were assigned an option
+- #### Display feedback to the user if not all properties were assigned an option
+  - If all properties were assigned:
+    - Add the product to the cart,
+    - Ask if the user would like to proceed to checkout or go to the products list
+- #### When a product is added to the cart
+  - The cart's count, which is displayed on the header is reflected, therefore, increased.
+  - The product with the product's properties and the chosen option for each property is displayed on the cart.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### 4.Cart
 
-### Deployment
+- #### The cart displays each product item followed by
+  - A custom input number field used to increase or decrease the amount of the same product in the cart:
+    - When the user tries to input a number below `1`, a confirm box will pop up and ask if the intention is to delete the product
+    - The product will be deleted if the user confirms their intention, otherwise, the value remains `1` unit of the product
+  - A delete button represented by a trash can icon that is used to delete the product from the cart
+- #### The cart has a footer that contains one handler:
+  - An `X` exit button, when clicked go back to the previous rote;
+- #### The cart has a footer that contains two handlers:
+  - A `BUY IT` button to lead to `cart/checkout`;
+  - A `CANCEL` button to leave the cart and return to `/`.
+- #### Empty cart:
+  - If no items are in the cart, a message `The sopping cart is empty` will be displayed on the cart.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### 5.Header
 
-### `yarn build` fails to minify
+- #### The application header contains a navigation with the following elements:
+  - `Home` link which leads to`/`
+  - A cart icon, which is a link that leads to `/cart`:
+    - When there is no item in the cart, an outlined icon will be shown
+    - If the cart contains at least one item, a filled icon will be shown
+  - A badge in a pill shape format, which reflect the items in the cart
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Create React App
+
+This project was scaffolded using the create-react-app CLI.
+
+**[The standard create-react-app docs can be found here](./create-react-app-docs.md)**
+
+## [Check out the deployed version here!](https://giovani-zanetti-products-assignment.netlify.app/)
+
+If you have feedback, **[please drop me a line here!](https://www.linkedin.com/in/giovani-zanetti/)** or email me at zanetti.giovani@gmail.com
