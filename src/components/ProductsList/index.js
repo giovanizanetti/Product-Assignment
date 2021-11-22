@@ -7,7 +7,7 @@ import Product from '../Product'
 const ProductsList = () => {
   const { products, selectProduct } = useContext(Store)
 
-  if (!products?.length) return <strong>Sorry! There are no products.</strong>
+  if (!products?.length) return <strong>Sorry! There are no products</strong>
 
   return (
     <div data-testid='productsList-component' className='container lg:my-12  mx-auto px-4 md:px-12'>

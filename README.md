@@ -9,6 +9,7 @@ This project is part of a take-home assignment given by a company to check wheth
 ## Table of contents:
 
 - **[Installation](#installation)**
+- **[Tests](#tests)**
 - **[Technologies used](#technologies-used)**
 - **[Goals for this project](#goals-for-this-project)**
 - **[Requirements](#requirements)**
@@ -27,6 +28,10 @@ or
 
 Once you have cloned the repo, you can run:
 `yarn install` or `npm install` to download all the dependencies needed for the project to work on your machine.
+
+## Tests
+
+To run the test jusr run `yarn test` or npm `test'
 
 ## Technologies used
 
