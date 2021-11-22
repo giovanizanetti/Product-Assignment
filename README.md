@@ -14,11 +14,11 @@ This project is part of a take-home assignment given by a company to check wheth
 - **[Goals for this project](#goals-for-this-project)**
 - **[Requirements](#requirements)**
 - **[Features built so far ](#features-built-so-far)**
-- **[create-react-app-docs](#create-react-app)**
+- **[Create-react-app-docs](#create-react-app)**
 
 ## Installation
 
-You easily close this repo on your machine by using one of the following commands:
+You can easily close this repo on your machine by using one of the following commands:
 
 `git@github.com:giovanizanetti/Products-Assignment.git`
 
@@ -31,7 +31,7 @@ Once you have cloned the repo, you can run:
 
 ## Tests
 
-To run the test jusr run `yarn test` or npm `test'
+To run some tests just run `yarn test` or `npm test`
 
 ## Technologies used
 
@@ -64,7 +64,7 @@ To run the test jusr run `yarn test` or npm `test'
 2.  See a product selector with available options (see json files in this Repo)
 3.  Be able to select different options in the product
 4.  Add a product to a cart
-    5.Validate if the options is a possible option via the 'excludes' property.
+5.  Validate if the options is a possible option via the 'excludes' property
 
 ## Features built so far
 
@@ -76,10 +76,10 @@ To run the test jusr run `yarn test` or npm `test'
 
 - #### Each product displays a list of all product properties
 - #### Each property comes with a selectable dropdown menu that displays all options for a given property
-- The user then can choose one option for each property
-- The user can change the option choice before adding the product to the cart
-- The option can be typed and/or searched on the selectable dropdown
-- When an option is selected, the background color of the option is changed to green color
+  - The user then can choose one option for each property
+  - The user can change the option choice before adding the product to the cart
+  - The option can be typed and/or searched on the selectable dropdown
+  - When an option is selected, the background color of the option is changed to green color
 
 ### 3. Add a product to the shopping cart `/cart`
 
