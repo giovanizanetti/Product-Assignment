@@ -1,3 +1,30 @@
+//TODO
+
+//EXCLUDES
+
+// Check excludes properties
+// Check how many properties are in each array item
+// Save the length of the properties
+// Create a new array of objects with the following properties:
+//*   {
+//      count: (lenght of the properties)
+//      options: [array containing all options for the item]
+//      properties: [array containing all properties]
+//    }
+
+// Check properties from the product
+// When the user finishing selecting
+// *get the chosenOption array
+// *extract the slugs in a different array
+// *compare the chosenOptions array with the formated excludes array to check if the property is present
+// **if the property is present compare extracted slug array with the items from the new excludes array that contain the property in it
+// **use the item.options array to compare it.
+// ***if option apear >= item.count, the combination will not be valid
+// remembering that the user can choose only one option per property. That is why count is === property.length
+
+//JS ARRAY METHODS THAT COULD HELP WITH THIS ALGORITHIM
+// * flat(), reduce(), some(), filter(), map(), includes()
+
 import { useProduct } from '../../hooks/useProduct'
 import { capitalize, removeStringUnderline } from '../../helpers'
 import { useState, useContext, useEffect } from 'react'
@@ -14,14 +41,6 @@ const ProductDetails = ({ type }) => {
   const { titlePlural } = currentProduct || {}
   const { choosenProductOptions, addProductToCart, selectedProduct, selectProduct } = useContext(Store) || {}
   const [showFeedback, setShowFeedback] = useState(false)
-
-  //TODO EXCLUDES
-  // CHECK THE USERS CHOICES AGAINST THE groupedFlatenExcluded
-  // IF MORE THANM ONE OPTION IS TRUTHY CHOICE IS NOT VALID
-
-  // const groupedFlatenExcluded = currentProduct.excludes.map((item) => item.map((subitem) => subitem.options).flat(1))
-  // const groupedFlatenExcluded = currentProduct.excludes.map((item) => item.map((subitem) => subitem.options))
-  // console.log(groupedFlatenExcluded)
 
   useEffect(() => {
     if (selectedProduct === null) {
