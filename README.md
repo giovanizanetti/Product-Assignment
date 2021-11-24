@@ -84,6 +84,7 @@ To run some tests just run `yarn test` or `npm test`
     - If the user chooses the custom option:
       - A modal will pop up, so the user can select the size and height of the given product's property. 
       - The inputs are sliders, with a range between the minimum and height and width provided by the data.
+      - When the user confirms their choice, the label of the property inside the dropdown menu will be appended with the chosen sizes. For instance, before `custom`, after `custom(100x3100mm)`
 
 ### 3. Add a product to the shopping cart `/cart`
 
