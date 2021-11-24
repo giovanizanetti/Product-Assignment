@@ -129,4 +129,4 @@ This project was scaffolded using the create-react-app CLI.
 
 ## [Check out the deployed version here!](https://giovani-zanetti-products-assignment.netlify.app/)
 
-If you have feedback, **[please drop me a line here!](https://www.linkedin.com/in/giovani-zanetti/)** or email me at zanetti.giovani@gmail.com
+If you have any feedback, **[please drop me a line here!](https://www.linkedin.com/in/giovani-zanetti/)** or email me at zanetti.giovani@gmail.com
