@@ -80,6 +80,10 @@ To run some tests just run `yarn test` or `npm test`
   - The user can change the option choice before adding the product to the cart
   - The option can be typed and/or searched on the selectable dropdown
   - When an option is selected, the background color of the option is changed to green color
+  - If the property has custom sizes, it will be displayed with the label `custom`:
+    - If the user chooses the custom option:
+      - A modal will pop up, so the user can select the size and height of the given product's property. 
+      - The inputs are sliders, with a range between the minimum and height and width provided by the data.
 
 ### 3. Add a product to the shopping cart `/cart`
 
