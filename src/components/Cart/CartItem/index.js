@@ -7,13 +7,6 @@ const CartItem = ({ item }) => {
   const { name, choosenOptions } = item || {}
   const [productCount, setProductCount] = useState(1)
 
-  //TODO
-
-  //COMPARE EXCLUDES
-  //CHECK FOR BUGS
-  //MAKE A README FILE
-  //CHECK IF STYLE IS RESPONSIVE
-
   const handleReduceQuantity = () => {
     if (productCount === 1) {
       const isDelete = window.confirm('D you want to delete this product?')
@@ -34,9 +27,9 @@ const CartItem = ({ item }) => {
   }
 
   return (
-    <li className='flex flex-col sm:flex-row justify-between py-3 items-center border-b border-solid border-gray-400'>
+    <li className='flex flex-col sm:flex-row justify-between py-3 pb-8 items-center border-b border-solid border-gray-400'>
       <div className='custom-number-input w-32'>
-        <div className='flex flex-row w-full rounded-lg relative bg-transparent mt-1'>
+        <div className='flex justify-center flex-row w-full rounded-lg relative bg-transparent mt-1'>
           <button
             data-action='decrement'
             className=' bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-7 rounded-l cursor-pointer outline-none'
@@ -61,7 +54,7 @@ const CartItem = ({ item }) => {
       </div>
 
       <span className='px-3'>
-        <h2 className='uppercase text-2xl p-2'>{name}</h2>
+        <h2 className='uppercase text-2xl p-2 pt-7 sm:pt-2'>{name}</h2>
         <h3 className='font-bold underline p-3 pt-3'>Product Properties</h3>
         <ul>
           {choosenOptions &&
@@ -75,12 +68,12 @@ const CartItem = ({ item }) => {
             })}
         </ul>
       </span>
-      <span className='px-3'>
+      <span className='p-3 font-bold text-lg'>
         <span> &euro;</span> <span>0,00</span>
       </span>
       <span
         onClick={() => deleteProductFromCart(item.id)}
-        className='px-3 text-3xl text-red-600 hover:text-red-800 cursor-pointer'
+        className='p-3 text-3xl text-red-600 hover:text-red-800 cursor-pointer'
       >
         <RiDeleteBin6Line />
       </span>
