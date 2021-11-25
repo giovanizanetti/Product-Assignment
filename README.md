@@ -104,7 +104,7 @@ To run some tests just run `yarn test` or `npm test`
     - When the user tries to input a number below `1`, a confirm box will pop up and ask if the intention is to delete the product
     - The product will be deleted if the user confirms their intention, otherwise, the value remains `1` unit of the product
   - A delete button represented by a trash can icon that is used to delete the product from the cart
-- #### The cart has a footer that contains one handler:
+- #### The cart has a header that contains one handler:
   - An `X` exit button, when clicked go back to the previous rote;
 - #### The cart has a footer that contains two handlers:
   - A `BUY IT` button to lead to `cart/checkout`;
