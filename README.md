@@ -20,11 +20,11 @@ This project is part of a take-home assignment given by a company to check wheth
 
 You can easily close this repo on your machine by using one of the following commands:
 
-`git@github.com:giovanizanetti/Products-Assignment.git`
+`git clone git@github.com:giovanizanetti/Products-Assignment.git`
 
 or
 
-`https://github.com/giovanizanetti/Products-Assignment.git`
+`git clone https://github.com/giovanizanetti/Products-Assignment.git`
 
 Once you have cloned the repo, you can run:
 `yarn install` or `npm install` to download all the dependencies needed for the project to work on your machine.
